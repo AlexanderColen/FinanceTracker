@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { formatClasses } from "../helpers";
-import { BankIcon } from "../icons/bank";
-import { CashCoinIcon } from "../icons/cashCoin";
-import { GraphUpIcon } from "../icons/graphUp";
-import { TableIcon } from "../icons/table";
+import { BankIcon } from "../utils/icons/bank";
+import { CashCoinIcon } from "../utils/icons/cashCoin";
+import { GraphUpIcon } from "../utils/icons/graphUp";
+import { TableIcon } from "../utils/icons/table";
 import { IBaseProps } from "../types";
 import "./dashboard.scss";
 import { NavigateFunction, useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ export const Dashboard: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
   return (
     <Container
       className={formatClasses(["dashboard", props.extraClassName])}
+      id={props.id}
       onClick={props.onClick}
     >
       <Row>

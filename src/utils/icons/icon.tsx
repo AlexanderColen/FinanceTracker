@@ -1,9 +1,10 @@
 import { FC, ReactNode } from "react";
-import { formatClasses } from "../helpers";
-import { IBaseProps } from "../types";
+import { formatClasses } from "../../helpers";
+import { IBaseProps } from "../../types";
 
 /**
  * Interface use to define the properties for the Icon component.
+ * @extends IBaseProps
  */
 export interface IIconProps extends IBaseProps {
   /**
@@ -23,6 +24,7 @@ export const Icon: FC<IIconProps> = (props: IIconProps): JSX.Element => {
       className={formatClasses(["icon", props.extraClassName])}
       fill="currentColor"
       height={props.size || "16pt"}
+      id={props.id}
       onClick={props.onClick}
       viewBox="0 0 16 16"
       width={props.size || "16pt"}

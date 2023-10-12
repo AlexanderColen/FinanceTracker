@@ -1,18 +1,14 @@
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Dashboard } from "../dashboard/dashboard";
-import { formatClasses } from "../helpers";
 import { IBaseProps } from "../types";
-import "./app.scss";
 import { WIP } from "../wip/wip";
 import { Header } from "../header/header";
+import { Expenditures } from "../expenditures/expenditures";
 
 export const App: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
   return (
-    <div
-      className={formatClasses(["finance-tracker-app", props.extraClassName])}
-      onClick={props.onClick}
-    >
+    <div className={props.extraClassName} id={props.id} onClick={props.onClick}>
       <Header />
 
       <Routes>
@@ -21,10 +17,7 @@ export const App: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
 
           <Route path="debts" element={<WIP pageTitle="Debts" />} />
 
-          <Route
-            path="expenditures"
-            element={<WIP pageTitle="Expenditures" />}
-          />
+          <Route path="expenditures" element={<Expenditures />} />
 
           <Route path="income" element={<WIP pageTitle="Income" />} />
 

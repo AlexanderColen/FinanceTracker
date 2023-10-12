@@ -2,9 +2,13 @@ import { FC } from "react";
 import { formatClasses } from "../helpers";
 import { IBaseProps } from "../types";
 import "./wip.scss";
-import { ConeStripedIcon } from "../icons/coneStriped";
+import { ConeStripedIcon } from "../utils/icons/coneStriped";
 import Container from "react-bootstrap/Container";
 
+/**
+ * Interface use to define the properties for the WIP component.
+ * @extends IBaseProps
+ */
 export interface IWIPProps extends IBaseProps {
   /**
    * The page title to display as being under construction.
@@ -22,6 +26,7 @@ export const WIP: FC<IWIPProps> = (props: IWIPProps): JSX.Element => {
         "container",
         props.extraClassName,
       ])}
+      id={props.id}
       onClick={props.onClick}
     >
       <ConeStripedIcon size="10rem" />
