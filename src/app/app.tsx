@@ -19,13 +19,16 @@ export const App: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
         <Route path="/">
           <Route index element={<Dashboard />} />
 
-          <Route path="debts" element={<WIP />} />
+          <Route path="debts" element={<WIP pageTitle="Debts" />} />
 
-          <Route path="expenditures" element={<WIP />} />
+          <Route
+            path="expenditures"
+            element={<WIP pageTitle="Expenditures" />}
+          />
 
-          <Route path="income" element={<WIP />} />
+          <Route path="income" element={<WIP pageTitle="Income" />} />
 
-          <Route path="overview" element={<WIP />} />
+          <Route path="overview" element={<WIP pageTitle="Overview" />} />
         </Route>
       </Routes>
     </div>
