@@ -3,7 +3,7 @@ import { formatClasses } from "../helpers";
 import { IBaseProps } from "../types";
 import "./wip.scss";
 import { ConeStripedIcon } from "../icons/coneStriped";
-import { Container } from "react-bootstrap";
+import Container from "react-bootstrap/Container";
 
 export interface IWIPProps extends IBaseProps {
   /**

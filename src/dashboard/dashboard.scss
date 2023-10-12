@@ -1,8 +1,5 @@
 .dashboard {
-  align-items: center;
-  display: flex;
   height: calc(100vh - 60px);
-  justify-content: center;
 
   .dashboard-block {
     align-items: center;
@@ -13,16 +10,7 @@
     font-size: 3rem;
     height: 250px;
     justify-content: center;
-    margin: 50px;
-    width: 500px;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    margin: 25px 50px;
 
     &:hover {
       color: darkgreen;

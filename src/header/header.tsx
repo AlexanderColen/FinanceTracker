@@ -1,9 +1,11 @@
 import { FC } from "react";
 import { IBaseProps } from "../types";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { Container, Nav, Navbar } from "react-bootstrap";
 import "./header.scss";
 import { formatClasses } from "../helpers";
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
 
 export const Header: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
