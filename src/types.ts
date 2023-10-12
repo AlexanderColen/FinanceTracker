@@ -3,6 +3,10 @@
  */
 export interface IBaseProps {
   /**
+   * The aria label to assign the the component.
+   */
+  ariaLabel?: string;
+  /**
    * The extra class name to add to the component's outermost element.
    */
   extraClassName?: string | undefined;

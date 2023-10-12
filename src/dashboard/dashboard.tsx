@@ -13,33 +13,32 @@ export const Dashboard: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
 
   return (
     <div
-      className={formatClasses([
-        "dashboard",
-        "container",
-        props.extraClassName,
-      ])}
+      className={formatClasses(["dashboard", props.extraClassName])}
       onClick={props.onClick}
     >
       <div>
         <div className="dashboard-block" onClick={() => navigate("/overview")}>
-          <GraphUpIcon />
+          <GraphUpIcon size="3rem" />
           <p>Overview</p>
         </div>
         <div
           className="dashboard-block"
           onClick={() => navigate("/expenditures")}
         >
-          <TableIcon />
+          <TableIcon size="3rem" />
           <p>Expenditures</p>
         </div>
       </div>
       <div>
-        <div className="dashboard-block" onClick={() => navigate("/debts")}>
-          <BankIcon />
+        <div className="dashboard-block wip" onClick={() => navigate("/debts")}>
+          <BankIcon size="3rem" />
           <p>Debt</p>
         </div>
-        <div className="dashboard-block" onClick={() => navigate("/income")}>
-          <CashCoinIcon />
+        <div
+          className="dashboard-block wip"
+          onClick={() => navigate("/income")}
+        >
+          <CashCoinIcon size="3rem" />
           <p>Income</p>
         </div>
       </div>
