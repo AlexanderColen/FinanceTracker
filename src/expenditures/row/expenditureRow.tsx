@@ -1,10 +1,12 @@
 import { DateTime } from 'luxon';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { formatClasses, formatCurrency } from '../../helpers';
+import { addIfNew } from '../../store/categories/categoriesSlice';
 import { IBaseProps, IExpenditure } from '../../types';
+import { useAppDispatch } from '../../utils/hooks';
 import { ArrowCounterClockwiseIcon } from '../../utils/icons/arrowCounterClockwise';
 import { FloppyIcon } from '../../utils/icons/floppy';
 import { PencilSquareIcon } from '../../utils/icons/pencilSquare';
@@ -19,13 +21,18 @@ import './expenditureRow.scss';
  */
 export interface IExpenditureRowProps extends IBaseProps {
   /**
-   * Callback used to delete the expenditure in the parent component.
+   * Callback used to delete the Expenditure in the parent component.
    */
   deleteExpenditure: () => void;
   /**
    * The existing Expenditure to load in.
    */
   expenditure: IExpenditure;
+  /**
+   * Callback used to update an Expenditure in the parent component.
+   * @param expenditure The Expenditure to update.
+   */
+  updateExpenditure: (expenditure: IExpenditure) => void;
 }
 
 export const ExpenditureRow: FC<IExpenditureRowProps> = (
@@ -35,7 +42,9 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
   const [expenditureSnapshot, setExpenditureSnapshot] = useState<IExpenditure>(
     props.expenditure
   );
-  const [date, setDate] = useState<DateTime>(props.expenditure.date);
+  const [date, setDate] = useState<DateTime | null>(
+    props.expenditure.date || null
+  );
   const [amount, setAmount] = useState<number | undefined>(
     props.expenditure.amount
   );
@@ -46,29 +55,47 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
     props.expenditure.category
   );
 
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    initializeData(props.expenditure);
+  }, [props.expenditure]);
+
+  useEffect(() => {
+    if (expenditureSnapshot !== props.expenditure) {
+      props.updateExpenditure(expenditureSnapshot);
+    }
+  }, [expenditureSnapshot]);
+
   return (
     <Row
       className={formatClasses(['expenditure-row', props.extraClassName])}
       id={props.id}
       onClick={props.onClick}
     >
-      <Col>{date.weekNumber}</Col>
+      <Col>{date ? date.weekNumber : '-'}</Col>
       <Col>
         {isEditing ? (
           <input
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
-              setDate(DateTime.fromJSDate(new Date(event.target.value)))
+              setDate(
+                event.target.value
+                  ? DateTime.fromJSDate(new Date(event.target.value))
+                  : null
+              )
             }
             type='date'
-            value={date.toJSDate().toLocaleDateString()}
+            value={date?.toJSDate().toLocaleDateString()}
           />
-        ) : (
+        ) : date ? (
           date.toJSDate().toLocaleDateString()
+        ) : (
+          'Unknown'
         )}
       </Col>
       <Col>
         {isEditing ? (
-          <NumberInput minimunValue={0} setValue={setAmount} value={amount} />
+          <NumberInput minimumValue={0} setValue={setAmount} value={amount} />
         ) : (
           formatCurrency(amount)
         )}
@@ -92,10 +119,11 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
                 ...expenditureSnapshot,
                 amount,
                 category,
-                date,
+                date: date || undefined,
                 vendor,
               });
               setIsEditing(!isEditing);
+              dispatch(addIfNew(category));
             }}
             variant='success'
           >
@@ -117,10 +145,7 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
           <Button
             className='btn-action'
             onClick={() => {
-              setAmount(expenditureSnapshot.amount);
-              setCategory(expenditureSnapshot.category);
-              setDate(expenditureSnapshot.date);
-              setVendor(expenditureSnapshot.vendor);
+              initializeData(expenditureSnapshot);
               setIsEditing(!isEditing);
             }}
             variant='danger'
@@ -141,4 +166,16 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
       </Col>
     </Row>
   );
+
+  /**
+   * Initialize the component's data.
+   * @param expenditure The Expenditure to initialize data from.
+   */
+  function initializeData(expenditure: IExpenditure): void {
+    setExpenditureSnapshot(expenditure);
+    setAmount(expenditure.amount);
+    setCategory(expenditure.category);
+    setDate(expenditure.date || null);
+    setVendor(expenditure.vendor);
+  }
 };

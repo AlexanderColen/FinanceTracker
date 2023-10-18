@@ -23,6 +23,20 @@ export interface IBaseProps {
 }
 
 /**
+ * Interface defining base properties that every input extends.
+ */
+export interface IBaseInputProps extends IBaseProps {
+  /**
+   * Indicator whether the input should be disabled.
+   */
+  disabled?: boolean;
+  /**
+   * The placeholder to
+   */
+  placeholder?: string;
+}
+
+/**
  * Enum defining the API slugs that are available.
  */
 export enum ApiSlugEnum {
@@ -55,7 +69,7 @@ export interface IExpenditure extends IBaseModel {
   /**
    * The date the transaction happened.
    */
-  date: DateTime;
+  date: DateTime | undefined;
   /**
    * The vendor of the receiving amount.
    */

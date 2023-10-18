@@ -37,6 +37,7 @@ export const Expenditures: FC<IBaseProps> = (
           deleteExpenditure={() => deleteExpenditure(expenditure.id)}
           expenditure={expenditure}
           key={expenditure.id}
+          updateExpenditure={updateExpenditure}
         />
       ))}
 
@@ -62,8 +63,6 @@ export const Expenditures: FC<IBaseProps> = (
         ? 0
         : Math.max(...clonedExpenditures.map((model: IBaseModel) => model.id));
 
-    console.log(highestId);
-
     clonedExpenditures.push({
       amount: undefined,
       category: '?',
@@ -76,8 +75,8 @@ export const Expenditures: FC<IBaseProps> = (
   }
 
   /**
-   * Delete an expenditure from the collection.
-   * @param id The ID of the expenditure to delete.
+   * Delete an Expenditure from the collection.
+   * @param id The ID of the Expenditure to delete.
    */
   function deleteExpenditure(id: number): void {
     const clonedExpenditures: IExpenditure[] = cloneDeep(expenditures);
@@ -88,6 +87,24 @@ export const Expenditures: FC<IBaseProps> = (
 
     if (foundIndex !== -1) {
       clonedExpenditures.splice(foundIndex, 1);
+    }
+
+    setExpenditures(clonedExpenditures);
+  }
+
+  /**
+   * Update an Expenditure.
+   * @param expenditure The Expenditure with values to update.
+   */
+  function updateExpenditure(expenditure: IExpenditure): void {
+    const clonedExpenditures: IExpenditure[] = cloneDeep(expenditures);
+
+    const foundIndex: number = clonedExpenditures.findIndex(
+      (model: IBaseModel) => model.id === expenditure.id
+    );
+
+    if (foundIndex !== -1) {
+      clonedExpenditures[foundIndex] = expenditure;
     }
 
     setExpenditures(clonedExpenditures);

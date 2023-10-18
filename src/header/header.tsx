@@ -13,7 +13,7 @@ export const Header: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
   return (
     <Navbar
       aria-label={props.ariaLabel}
-      className={formatClasses(['bg-body-tertiary', props.extraClassName])}
+      className={formatClasses(['bg-body-dark', props.extraClassName])}
       expand='lg'
       onClick={props.onClick}
     >

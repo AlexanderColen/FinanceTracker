@@ -1,15 +1,11 @@
 import { ChangeEvent, FC } from 'react';
-import { IBaseProps } from '../../types';
+import { IBaseInputProps } from '../../types';
 
 /**
  * Interface use to define the properties for the TextInput component.
  * @extends IBaseProps
  */
-export interface ITextInputProps extends IBaseProps {
-  /**
-   * Indicator whether the input should be disabled.
-   */
-  disabled?: boolean;
+export interface ITextInputProps extends IBaseInputProps {
   /**
    * The maximum allowed length for the value.
    */
@@ -44,6 +40,7 @@ export const TextInput: FC<ITextInputProps> = (
       onChange={(event: ChangeEvent<HTMLInputElement>) =>
         props.setValue(event.target.value)
       }
+      placeholder={props.placeholder}
       type='text'
       value={props.value}
     />
