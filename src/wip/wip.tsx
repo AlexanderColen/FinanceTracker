@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { formatClasses } from "../helpers";
-import { IBaseProps } from "../types";
-import "./wip.scss";
-import { ConeStripedIcon } from "../utils/icons/coneStriped";
-import Container from "react-bootstrap/Container";
+import { FC } from 'react';
+import { formatClasses } from '../helpers';
+import { IBaseProps } from '../types';
+import './wip.scss';
+import { ConeStripedIcon } from '../utils/icons/coneStriped';
+import Container from 'react-bootstrap/Container';
 
 /**
  * Interface use to define the properties for the WIP component.
@@ -22,15 +22,15 @@ export const WIP: FC<IWIPProps> = (props: IWIPProps): JSX.Element => {
   return (
     <Container
       className={formatClasses([
-        "work-in-progress",
-        "container",
+        'work-in-progress',
+        'container',
         props.extraClassName,
       ])}
       id={props.id}
       onClick={props.onClick}
     >
-      <ConeStripedIcon size="10rem" />
-      <div className="description">
+      <ConeStripedIcon size='10rem' />
+      <div className='description'>
         <p>The '{props.pageTitle}' page is still under construction.</p>
         <p>Please come back later.</p>
       </div>

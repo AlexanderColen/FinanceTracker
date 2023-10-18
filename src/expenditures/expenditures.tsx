@@ -1,29 +1,29 @@
-import { FC, useState } from "react";
-import { formatClasses } from "../helpers";
-import { IBaseModel, IBaseProps, IExpenditure } from "../types";
-import "./expenditures.scss";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import { ExpenditureRow } from "./row/expenditureRow";
-import { cloneDeep } from "lodash-es";
-import { DateTime } from "luxon";
-import { PlusIcon } from "../utils/icons/plus";
-import Button from "react-bootstrap/Button";
+import { FC, useState } from 'react';
+import { formatClasses } from '../helpers';
+import { IBaseModel, IBaseProps, IExpenditure } from '../types';
+import './expenditures.scss';
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { ExpenditureRow } from './row/expenditureRow';
+import { cloneDeep } from 'lodash-es';
+import { DateTime } from 'luxon';
+import { PlusIcon } from '../utils/icons/plus';
+import Button from 'react-bootstrap/Button';
 
 export const Expenditures: FC<IBaseProps> = (
   props: IBaseProps
 ): JSX.Element => {
   const [expenditures, setExpenditures] = useState<IExpenditure[]>([]);
 
-  document.title = "Expenditures | Finance Tracker";
+  document.title = 'Expenditures | Finance Tracker';
 
   return (
     <Container
-      className={formatClasses(["expenditures", props.extraClassName])}
+      className={formatClasses(['expenditures', props.extraClassName])}
       onClick={props.onClick}
     >
-      <Row className="column-headers">
+      <Row className='column-headers'>
         <Col>Week</Col>
         <Col>Date</Col>
         <Col>Amount</Col>
@@ -41,9 +41,9 @@ export const Expenditures: FC<IBaseProps> = (
       ))}
 
       <Button
-        id="btn-add-expenditure"
+        id='btn-add-expenditure'
         onClick={addNewExpenditure}
-        variant="info"
+        variant='info'
       >
         <PlusIcon />
         Add row
@@ -66,10 +66,10 @@ export const Expenditures: FC<IBaseProps> = (
 
     clonedExpenditures.push({
       amount: undefined,
-      category: "?",
+      category: '?',
       date: DateTime.now(),
       id: highestId + 1,
-      vendor: "?",
+      vendor: '?',
     });
 
     setExpenditures(clonedExpenditures);

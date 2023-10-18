@@ -1,5 +1,5 @@
-import { ChangeEvent, FC } from "react";
-import { IBaseProps } from "../../types";
+import { ChangeEvent, FC } from 'react';
+import { IBaseProps } from '../../types';
 
 /**
  * Interface use to define the properties for the TextInput component.
@@ -44,7 +44,7 @@ export const TextInput: FC<ITextInputProps> = (
       onChange={(event: ChangeEvent<HTMLInputElement>) =>
         props.setValue(event.target.value)
       }
-      type="text"
+      type='text'
       value={props.value}
     />
   );

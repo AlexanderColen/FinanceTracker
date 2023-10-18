@@ -1,12 +1,12 @@
-import { API_URL } from "./env";
-import { ApiSlugEnum } from "./types";
+import { API_URL } from './env';
+import { ApiSlugEnum } from './types';
 
 /**
  * Helper method for formatting HTML class names.
  * @param classes The classes to format.
  */
 export function formatClasses(classes: (string | undefined)[]): string {
-  return classes.filter((cssClass: string | undefined) => cssClass).join(" ");
+  return classes.filter((cssClass: string | undefined) => cssClass).join(' ');
 }
 
 /**
@@ -21,11 +21,11 @@ export function formatClasses(classes: (string | undefined)[]): string {
 export function formatCurrency(
   amount: number | undefined | null,
   locale?: string | string[],
-  currency: string = "CAD"
+  currency: string = 'CAD'
 ): string {
   return Intl.NumberFormat(locale, {
     currency: currency,
-    style: "currency",
+    style: 'currency',
   }).format(amount || 0);
 }
 
@@ -37,10 +37,10 @@ export async function fetchResource(args: {
   apiSlug: ApiSlugEnum;
   body?: object;
   id?: number | string;
-  method?: "DELETE" | "GET" | "PATCH" | "POST";
+  method?: 'DELETE' | 'GET' | 'PATCH' | 'POST';
 }): Promise<object> {
   try {
-    const url: string = `${API_URL}${args.apiSlug}${args.id || ""}`;
+    const url: string = `${API_URL}${args.apiSlug}${args.id || ''}`;
     let body: BodyInit | null | undefined;
 
     if (args.body) {
@@ -49,12 +49,12 @@ export async function fetchResource(args: {
 
     const response: Response = await fetch(url, {
       body: body,
-      credentials: "include",
+      credentials: 'include',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       method: args.method,
-      mode: "cors",
+      mode: 'cors',
     });
 
     return response.json();

@@ -1,5 +1,5 @@
-import { ChangeEvent, FC } from "react";
-import { IBaseProps } from "../../types";
+import { ChangeEvent, FC } from 'react';
+import { IBaseProps } from '../../types';
 
 /**
  * Interface use to define the properties for the NumberInput component.
@@ -43,7 +43,7 @@ export const NumberInput: FC<INumberInputProps> = (
       onChange={(event: ChangeEvent<HTMLInputElement>) =>
         props.setValue(Number(event.target.value))
       }
-      type="number"
+      type='number'
       value={props.value}
     />
   );

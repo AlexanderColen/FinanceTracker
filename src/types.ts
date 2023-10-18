@@ -1,4 +1,4 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 
 /**
  * Interface defining base properties that every component extends.
@@ -26,8 +26,8 @@ export interface IBaseProps {
  * Enum defining the API slugs that are available.
  */
 export enum ApiSlugEnum {
-  LOGIN = "api-auth/login/",
-  USERS = "users/",
+  LOGIN = 'api-auth/login/',
+  USERS = 'users/',
 }
 
 /**

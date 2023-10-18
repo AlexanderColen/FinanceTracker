@@ -1,17 +1,16 @@
-import { ChangeEvent, FC, useState } from "react";
-import { formatClasses, formatCurrency } from "../../helpers";
-import { IBaseProps, IExpenditure } from "../../types";
-import "./expenditureRow.scss";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import { DateTime } from "luxon";
-import Button from "react-bootstrap/Button";
-import { TextInput } from "../../utils/inputs/textInput";
-import { NumberInput } from "../../utils/inputs/numberInput";
-import { TrashIcon } from "../../utils/icons/trash";
-import { FloppyIcon } from "../../utils/icons/floppy";
-import { PencilSquareIcon } from "../../utils/icons/pencilSquare";
-import { Collapse } from "react-bootstrap";
+import { ChangeEvent, FC, useState } from 'react';
+import { formatClasses, formatCurrency } from '../../helpers';
+import { IBaseProps, IExpenditure } from '../../types';
+import './expenditureRow.scss';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import { DateTime } from 'luxon';
+import Button from 'react-bootstrap/Button';
+import { TextInput } from '../../utils/inputs/textInput';
+import { NumberInput } from '../../utils/inputs/numberInput';
+import { TrashIcon } from '../../utils/icons/trash';
+import { FloppyIcon } from '../../utils/icons/floppy';
+import { PencilSquareIcon } from '../../utils/icons/pencilSquare';
 
 /**
  * Interface use to define the properties for the ExpenditureRow component.
@@ -45,7 +44,7 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
 
   return (
     <Row
-      className={formatClasses(["expenditure-row", props.extraClassName])}
+      className={formatClasses(['expenditure-row', props.extraClassName])}
       id={props.id}
       onClick={props.onClick}
     >
@@ -56,7 +55,7 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
             onChange={(event: ChangeEvent<HTMLInputElement>) =>
               setDate(DateTime.fromJSDate(new Date(event.target.value)))
             }
-            type="date"
+            type='date'
             value={date.toJSDate().toLocaleDateString()}
           />
         ) : (
@@ -80,21 +79,21 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
           category
         )}
       </Col>
-      <Col className="actions">
+      <Col className='actions'>
         {isEditing ? (
           <Button
-            className="btn-action"
+            className='btn-action'
             onClick={() => setIsEditing(!isEditing)}
-            variant="success"
+            variant='success'
           >
             <FloppyIcon />
             Save
           </Button>
         ) : (
           <Button
-            className="btn-action"
+            className='btn-action'
             onClick={() => setIsEditing(!isEditing)}
-            variant="warning"
+            variant='warning'
           >
             <PencilSquareIcon />
             Edit
@@ -102,9 +101,9 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
         )}
 
         <Button
-          className="btn-action"
+          className='btn-action'
           onClick={props.deleteExpenditure}
-          variant="danger"
+          variant='danger'
         >
           <TrashIcon />
           Delete
