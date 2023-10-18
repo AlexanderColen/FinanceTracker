@@ -1,16 +1,17 @@
+import { DateTime } from 'luxon';
 import { ChangeEvent, FC, useState } from 'react';
-import { formatClasses, formatCurrency } from '../../helpers';
-import { IBaseProps, IExpenditure } from '../../types';
-import './expenditureRow.scss';
+import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { DateTime } from 'luxon';
-import Button from 'react-bootstrap/Button';
-import { TextInput } from '../../utils/inputs/textInput';
-import { NumberInput } from '../../utils/inputs/numberInput';
-import { TrashIcon } from '../../utils/icons/trash';
+import { formatClasses, formatCurrency } from '../../helpers';
+import { IBaseProps, IExpenditure } from '../../types';
+import { ArrowCounterClockwiseIcon } from '../../utils/icons/arrowCounterClockwise';
 import { FloppyIcon } from '../../utils/icons/floppy';
 import { PencilSquareIcon } from '../../utils/icons/pencilSquare';
+import { TrashIcon } from '../../utils/icons/trash';
+import { NumberInput } from '../../utils/inputs/numberInput';
+import { TextInput } from '../../utils/inputs/textInput';
+import './expenditureRow.scss';
 
 /**
  * Interface use to define the properties for the ExpenditureRow component.
@@ -31,6 +32,9 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
   props: IExpenditureRowProps
 ): JSX.Element => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [expenditureSnapshot, setExpenditureSnapshot] = useState<IExpenditure>(
+    props.expenditure
+  );
   const [date, setDate] = useState<DateTime>(props.expenditure.date);
   const [amount, setAmount] = useState<number | undefined>(
     props.expenditure.amount
@@ -83,7 +87,16 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
         {isEditing ? (
           <Button
             className='btn-action'
-            onClick={() => setIsEditing(!isEditing)}
+            onClick={() => {
+              setExpenditureSnapshot({
+                ...expenditureSnapshot,
+                amount,
+                category,
+                date,
+                vendor,
+              });
+              setIsEditing(!isEditing);
+            }}
             variant='success'
           >
             <FloppyIcon />
@@ -100,14 +113,31 @@ export const ExpenditureRow: FC<IExpenditureRowProps> = (
           </Button>
         )}
 
-        <Button
-          className='btn-action'
-          onClick={props.deleteExpenditure}
-          variant='danger'
-        >
-          <TrashIcon />
-          Delete
-        </Button>
+        {isEditing ? (
+          <Button
+            className='btn-action'
+            onClick={() => {
+              setAmount(expenditureSnapshot.amount);
+              setCategory(expenditureSnapshot.category);
+              setDate(expenditureSnapshot.date);
+              setVendor(expenditureSnapshot.vendor);
+              setIsEditing(!isEditing);
+            }}
+            variant='danger'
+          >
+            <ArrowCounterClockwiseIcon />
+            Cancel
+          </Button>
+        ) : (
+          <Button
+            className='btn-action'
+            onClick={props.deleteExpenditure}
+            variant='danger'
+          >
+            <TrashIcon />
+            Delete
+          </Button>
+        )}
       </Col>
     </Row>
   );

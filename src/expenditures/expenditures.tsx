@@ -1,15 +1,15 @@
-import { FC, useState } from 'react';
-import { formatClasses } from '../helpers';
-import { IBaseModel, IBaseProps, IExpenditure } from '../types';
-import './expenditures.scss';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import { ExpenditureRow } from './row/expenditureRow';
 import { cloneDeep } from 'lodash-es';
 import { DateTime } from 'luxon';
-import { PlusIcon } from '../utils/icons/plus';
+import { FC, useState } from 'react';
 import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import { formatClasses } from '../helpers';
+import { IBaseModel, IBaseProps, IExpenditure } from '../types';
+import { PlusIcon } from '../utils/icons/plus';
+import './expenditures.scss';
+import { ExpenditureRow } from './row/expenditureRow';
 
 export const Expenditures: FC<IBaseProps> = (
   props: IBaseProps

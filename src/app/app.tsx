@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Dashboard } from '../dashboard/dashboard';
+import { Expenditures } from '../expenditures/expenditures';
+import { Header } from '../header/header';
 import { IBaseProps } from '../types';
 import { WIP } from '../wip/wip';
-import { Header } from '../header/header';
-import { Expenditures } from '../expenditures/expenditures';
 
 export const App: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
   return (

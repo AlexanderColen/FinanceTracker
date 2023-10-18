@@ -1,9 +1,9 @@
 import { FC } from 'react';
+import Container from 'react-bootstrap/Container';
 import { formatClasses } from '../helpers';
 import { IBaseProps } from '../types';
-import './wip.scss';
 import { ConeStripedIcon } from '../utils/icons/coneStriped';
-import Container from 'react-bootstrap/Container';
+import './wip.scss';
 
 /**
  * Interface use to define the properties for the WIP component.

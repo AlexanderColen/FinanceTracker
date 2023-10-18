@@ -1,15 +1,15 @@
 import { FC } from 'react';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { formatClasses } from '../helpers';
+import { IBaseProps } from '../types';
 import { BankIcon } from '../utils/icons/bank';
 import { CashCoinIcon } from '../utils/icons/cashCoin';
 import { GraphUpIcon } from '../utils/icons/graphUp';
 import { TableIcon } from '../utils/icons/table';
-import { IBaseProps } from '../types';
 import './dashboard.scss';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 
 export const Dashboard: FC<IBaseProps> = (props: IBaseProps): JSX.Element => {
   const navigate: NavigateFunction = useNavigate();
