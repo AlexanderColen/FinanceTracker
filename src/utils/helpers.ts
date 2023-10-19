@@ -1,5 +1,5 @@
-import { API_URL } from './env';
-import { ApiSlugEnum } from './types';
+import { API_URL } from '../env';
+import { ApiSlugEnum } from '../types';
 
 /**
  * Helper method for formatting HTML class names.

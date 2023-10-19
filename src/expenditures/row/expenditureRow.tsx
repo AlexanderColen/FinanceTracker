@@ -3,7 +3,7 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import { formatClasses, formatCurrency } from '../../helpers';
+import { formatClasses, formatCurrency } from '../../utils/helpers';
 import { addIfNew } from '../../store/categories/categoriesSlice';
 import { IBaseProps, IExpenditure } from '../../types';
 import { useAppDispatch } from '../../utils/hooks';

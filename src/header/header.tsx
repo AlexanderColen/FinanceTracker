@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { formatClasses } from '../helpers';
+import { formatClasses } from '../utils/helpers';
 import { IBaseProps } from '../types';
 import './header.scss';
 

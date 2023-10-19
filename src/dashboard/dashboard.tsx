@@ -3,7 +3,7 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { formatClasses } from '../helpers';
+import { formatClasses } from '../utils/helpers';
 import { IBaseProps } from '../types';
 import { BankIcon } from '../utils/icons/bank';
 import { CashCoinIcon } from '../utils/icons/cashCoin';

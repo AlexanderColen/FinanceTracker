@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Container from 'react-bootstrap/Container';
-import { formatClasses } from '../helpers';
+import { formatClasses } from '../utils/helpers';
 import { IBaseProps } from '../types';
 import { ConeStripedIcon } from '../utils/icons/coneStriped';
 import './wip.scss';

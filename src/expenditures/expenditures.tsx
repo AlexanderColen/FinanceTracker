@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import { formatClasses } from '../helpers';
+import { formatClasses } from '../utils/helpers';
 import { IBaseModel, IBaseProps, IExpenditure } from '../types';
 import { PlusIcon } from '../utils/icons/plus';
 import './expenditures.scss';

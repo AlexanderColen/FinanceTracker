@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { formatClasses } from '../../helpers';
+import { formatClasses } from '../helpers';
 import { IBaseProps } from '../../types';
 
 /**
